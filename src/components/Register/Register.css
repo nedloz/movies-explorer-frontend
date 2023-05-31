@@ -1,0 +1,164 @@
+.register {
+  overflow-x: hidden;
+  width: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register__container {
+  background-color: white;
+  max-width: 396px;
+  box-sizing: border-box;
+  flex-basis: 396px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.register__logo {
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 40px;
+}
+
+.register__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0em;
+  margin-bottom: 40px;
+}
+
+.register__form {
+  width: 100%;
+}
+
+.register__input-name {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  color: #A0A0A0;
+}
+
+.register__input {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  padding: 0;
+  width: 100%;
+  height: 46px;
+  background: #F9F9F9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.register__input:focus {
+  outline: 1px solid #A0A0A0;
+}
+
+.register__input_type_error {
+  color: #FF3055;
+}
+
+.register__submit-button {
+  border: none;
+  background-color: #3456F3;
+  width: 100%;
+  height: 45px;
+  color: white;
+  border-radius: 3px;
+  margin-top: 69px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+}
+
+.register__error {
+  display: none;
+  margin-top: -10px;
+  color: #FF3055;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+}
+
+.register__error_visible {
+  display: flex;
+}
+
+.register__footer-text {
+  margin: 0 auto;
+  margin-top: 16px;
+  color: #A0A0A0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+}
+
+.register__footer-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #3456F3;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+}
+
+
+@media screen and (max-width: 600px) {
+  .register__container {
+    padding: 56px 30px 30px;
+    align-items: center;
+  }
+
+  .register__logo {
+    margin-bottom: 50px;
+  }
+
+  .register__title {
+    font-size: 24px;
+    margin-bottom: 80px;
+  }
+
+  .register__form {
+    width: 100%;
+  }
+
+  .register__submit-button {
+    margin-top: 157px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__footer {
+    margin-top: 14px;
+  }
+
+  .register__footer-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__footer-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

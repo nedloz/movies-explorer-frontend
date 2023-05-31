@@ -1,0 +1,136 @@
+.movies-card {
+  width: 270px;
+  height: 218px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.movies-card__image {
+  width: 270px;
+  height: 151px;
+  background-position: center;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.movies-card__description {
+  height: 67px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.movies-card__name {
+  max-width: 206px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.movies-card__duration {
+  max-width: 206px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0px;
+  color: #A0A0A0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.movies-card__cross {
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  margin: 4px;
+  width: 8px;
+  height: 8px;
+  background-image: url('../../images/cross.svg');
+}
+
+.movies-card__like {
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  outline: none;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+  position: relative;
+}
+
+.movies-card__like::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 7px;
+  transition: 0.5s;
+  background-color: #F9F9F9;
+}
+
+.movies-card__like:checked::before {
+  background-color: #2BE080;
+}
+
+@media screen and (max-width: 990px) {
+  .movies-card {
+    width: 339px;
+    height: 257px;
+  }
+
+  .movies-card__image {
+    width: 339px;
+    height: 190px;
+  }
+
+  .movies-card__name {
+    max-width: 280px;
+  }
+
+  .movies-card__duration {
+    max-width: 280px;
+  }
+}
+
+
+@media screen and (max-width: 850px) {
+  .movies-card {
+    max-width: 300px;
+    max-height: 235px;
+  }
+
+  .movies-card__image {
+    max-width: 300px;
+    max-height: 168px;
+  }
+
+  .movies-card__name {
+    max-width: 190px;
+  }
+
+  .movies-card__duration {
+    max-width: 190px;
+  }
+}
