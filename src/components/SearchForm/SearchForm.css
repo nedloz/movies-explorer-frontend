@@ -45,20 +45,24 @@
 
 .search-form__button {
   cursor: pointer;
-  color: white;
   border: none;
   padding: 0;
-  margin: 10px;
+  margin: 9px;
   margin-left: 0;
   margin-right: 10px;
   width: 100px;
   height: 52px;
   background: #3456F3;
+  color: #fff;
   border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   letter-spacing: 0em;
+}
+
+.search-form__button:hover {
+  opacity: .7;
 }
 
 .search-form__line {

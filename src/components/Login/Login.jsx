@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import './Login.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 
 function Login({
   setOnLogin,
@@ -34,7 +34,7 @@ function Login({
           }}
         >
           <label>
-            <p className='login__input-name'>E-mail</p>
+            <span className='login__input-name'>E-mail</span>
             <input
               className='login__input'
               type='email'
@@ -46,7 +46,7 @@ function Login({
             />
           </label>
           <label>
-            <p className='login__input-name'>Пароль</p>
+            <span className='login__input-name'>Пароль</span>
             <input
               className='login__input'
               type='password'

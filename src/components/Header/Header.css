@@ -24,40 +24,40 @@
   margin: 18px 0;
 }
 
-.header__link_type_films {
+.header__link {
   cursor: pointer;
   color: black;
   text-decoration: none;
-  font-weight: 500;
   font-size: 13px;
   line-height: 18px;
+}
+
+.header__link_type_films {
+  font-weight: 500;
   margin-right: 16px;
 }
 
 .header__link_type_saved-films {
-  cursor: pointer;
-  color: black;
-  text-decoration: none;
   font-weight: 400;
-  font-size: 13px;
   line-height: 18px;
 }
 
 .header__link_type_registration {
-  cursor: pointer;
   color: white;
-  text-decoration: none;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   margin-right: 30px;
 }
 
-.header__button_type_account {
+.header__button {
   cursor: pointer;
   border: none;
   margin: 0;
   padding: 0;
+}
+
+.header__button_type_account {
   background-color: #F9F9F9;
   width: 100px;
   height: 32px;
@@ -69,11 +69,9 @@
 }
 
 .header__button_type_login {
-  cursor: pointer;
   background-color: #2BE080;
   width: 76px;
   height: 32px;
-  border: none;
   border-radius: 3px;
   font-weight: 500;
   font-size: 12px;
@@ -81,11 +79,7 @@
 }
 
 .header__button_type_menu {
-  cursor: pointer;
   background-color: white;
-  border: none;
-  margin: 0;
-  padding: 0;
   background-image: url('../../images/header-menu-icon-average.svg');
   width: 44px;
   height: 44px;

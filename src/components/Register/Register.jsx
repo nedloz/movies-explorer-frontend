@@ -2,7 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import './Register.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 
 function Register({
   setOnRegister,
@@ -35,7 +35,7 @@ function Register({
           }}
         >
           <label>
-            <p className='register__input-name'>Имя</p>
+            <span className='register__input-name'>Имя</span>
             <input
               className='register__input'
               name='name'
@@ -46,7 +46,7 @@ function Register({
             />
           </label>
           <label>
-            <p className='register__input-name'>E-mail</p>
+            <span className='register__input-name'>E-mail</span>
             <input
               className='register__input'
               name='email'
@@ -58,7 +58,7 @@ function Register({
             />
           </label>
           <label>
-            <p className='register__input-name'>Пароль</p>
+            <span className='register__input-name'>Пароль</span>
             <input
               className='register__input'
               name='password'

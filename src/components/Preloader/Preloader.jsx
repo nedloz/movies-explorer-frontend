@@ -8,20 +8,20 @@ function Preloader() {
   if (isPreloaderActive) {
     setTimeout(() => {setIsPreloaderActive(false)}, 3000);
     return (
-      <div className="preloader_active">
-        <div className="preloader__container_active">
+      <section className="preloader preloader_type_active">
+        <div className="preloader__container preloader__container_type_active">
           <span className="preloader__round"></span>
         </div>
-      </div>
+      </section>
     )
   };
 
   return (
-    <div className='preloader'>
-      <div className='preloader__container'>
+    <section className='preloader preloader_type_unactive'>
+      <div className='preloader__container preloader__container_type_unactive'>
         <input type='button' className='preloader__button' value='Еще' onClick={() => setIsPreloaderActive(true)} />
       </div>
-    </div>
+    </section>
   )
 };
 

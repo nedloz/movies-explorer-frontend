@@ -17,9 +17,8 @@ function Menu({
   return (
     <div className={'menu' + (isMenuActive ? ' menu_active' : '')}>
       <div className='menu__container'>
-        <input
+        <button
           type='button'
-          value=''
           className='menu__close-button'
           onClick={onCloseButtonClick}
         />

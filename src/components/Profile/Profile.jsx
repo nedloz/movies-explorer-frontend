@@ -27,8 +27,8 @@ function Profile({
             <p className='profile__info-value'>emai@email.com</p>
           </div>
         </div>
-        <Link className='profile__link_type_change-info' to='' >Редактировать</Link>
-        <Link className='profile__link_type_logout' to='/' >Выйти из аккаунта</Link>
+        <Link className='profile__link profile__link_type_change-info' to='' >Редактировать</Link>
+        <Link className='profile__link profile__link_type_logout' to='/' >Выйти из аккаунта</Link>
     </div>
   )
 };

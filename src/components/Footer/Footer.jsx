@@ -20,8 +20,8 @@ function Footer({
             {new Date().getFullYear()}
           </p>
           <div className='footer__links-container'>
-            <a className='footer__link' href='https://practicum.yandex.ru'>Яндекс.Практикум</a>
-            <a className='footer__link' href='https://github.com/nedloz'>Github</a>
+            <a className='footer__link' target='_blank' rel="noreferrer" href='https://practicum.yandex.ru'>Яндекс.Практикум</a>
+            <a className='footer__link' target='_blank' rel="noreferrer" href='https://github.com/nedloz'>Github</a>
           </div>
 
         </div>

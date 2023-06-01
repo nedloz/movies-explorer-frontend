@@ -6,7 +6,7 @@ function MoviesCardList({
   onSavedMovies
 }) {
   return (
-    <div className='movies-card-list'>
+    <section className='movies-card-list'>
       <div className='movies-card-list__container'>
         <MoviesCard 
           isCrossActive={onSavedMovies}
@@ -24,7 +24,7 @@ function MoviesCardList({
           isCrossActive={onSavedMovies}
         />
       </div>
-    </div>
+    </section>
   )
 };
 
