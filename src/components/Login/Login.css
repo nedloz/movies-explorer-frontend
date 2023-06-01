@@ -39,7 +39,6 @@
 
 .login__input-name {
   margin: 0;
-  margin-bottom: 10px;
   font-size: 10px;
   font-weight: 400;
   line-height: 12px;
@@ -57,6 +56,7 @@
   background: #F9F9F9;
   border-radius: 8px;
   margin-bottom: 20px;
+  margin-top: 10px;
   padding: 15px;
   font-size: 13px;
   font-weight: 400;
@@ -65,13 +65,17 @@
   text-align: left;
 }
 
+.login__input:last-of-type {
+  margin-bottom: 22px;
+}
+
 .login__input:focus {
   outline: 1px solid #A0A0A0;
 }
 
 .login__error {
   display: none;
-  margin-top: -10px;
+  margin-top: -12px;
   color: #FF3055;
   font-size: 10px;
   font-weight: 400;
@@ -91,7 +95,7 @@
   height: 45px;
   color: white;
   border-radius: 3px;
-  margin-top: 159px;
+  margin-top: 157px;
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;

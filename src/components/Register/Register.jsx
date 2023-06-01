@@ -1,19 +1,43 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 import './Register.css';
 import logo from '../../images/logo.svg';
+import { emailPattern } from '../../utils/constants';
+
+const formConfig = {
+  name: {
+    required: ' '
+  },
+  email: {
+    required: ' ',
+    pattern: {
+      value: emailPattern,
+      message: ' '
+    }
+  },
+  password: {
+    required: ' '
+  }
+}
 
 function Register({
   setOnRegister,
   setAllPagesOff,
 }) {
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
     setAllPagesOff();
     setOnRegister(true);
   });
+
+  const onSubmit = () => {
+    // navigate('/signin');
+    console.log('submit')
+  }
 
   return (
     <div className='register'>
@@ -28,47 +52,36 @@ function Register({
         <form
           className='register__form'
           name='register'
-          // noValidate
-          onSubmit={(e) => {
-            e.preventDefault();
-            navigate('/signin');
-          }}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <label>
             <span className='register__input-name'>Имя</span>
             <input
+              {...register('name', formConfig.name)}
               className='register__input'
               name='name'
               type='text'
-              required
-            // onChange={}
-            // value={}
             />
           </label>
           <label>
             <span className='register__input-name'>E-mail</span>
             <input
+              {...register('email', formConfig.email)}
               className='register__input'
               name='email'
-              type='email'
-              required
-            // type='text'
-            // onChange={}
-            // value={}
+              type='text'
             />
           </label>
           <label>
             <span className='register__input-name'>Пароль</span>
             <input
+              {...register('password', formConfig.password)}
               className='register__input'
               name='password'
               type='password'
-              required
-            // onChange={}
-            // value={}
             />
           </label>
-          <span className='register__error'>Что то пошло не так...</span>
+          <span className={'register__error' + (errors.name || errors.email || errors.password ? ' register__error_visible' : '' )}>Что то пошло не так...</span>
           <input
             className='register__submit-button'
             type='submit'

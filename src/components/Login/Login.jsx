@@ -1,18 +1,40 @@
 import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 import './Login.css';
 import logo from '../../images/logo.svg';
+import { emailPattern } from '../../utils/constants';
+
+const formConfig = {
+  email: {
+    required: ' ',
+    pattern: {
+      value: emailPattern,
+      message: ' '
+    }
+  },
+  password: {
+    required: ' '
+  }
+}
 
 function Login({
   setOnLogin,
   setAllPagesOff,
 }) {
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
+
   useEffect(() => {
     setAllPagesOff();
     setOnLogin(true);
   });
+
+  const onSubmit = () => {
+    // navigate('/movies')
+    console.log('navigate movies')
+  }
 
   return (
     <div className='login'>
@@ -27,36 +49,28 @@ function Login({
         <form
           className='login__form'
           name='login'
-          // noValidate
-          onSubmit={(e) => {
-            e.preventDefault()
-            navigate('/movies')
-          }}
+          onSubmit={handleSubmit(onSubmit)}
+          autoComplete='off'
         >
           <label>
             <span className='login__input-name'>E-mail</span>
             <input
+              {...register('email', formConfig.email)}
               className='login__input'
-              type='email'
-              name='password'
-              required
-            // type='text'
-            // onChange={}
-            // value={}
+              type='text'
+              name='email'
             />
           </label>
           <label>
             <span className='login__input-name'>Пароль</span>
             <input
+              {...register('password', formConfig.password)}
               className='login__input'
               type='password'
               name='password'
-              required
-            // onChange={}
-            // value={}
             />
           </label>
-          <span className='login__error'>Что то пошло не так...</span>
+          <span className={'login__error' + (errors.email || errors.password ? ' login__error_visible' : '')}>Что то пошло не так...</span>
           <input
             type='submit'
             value='Войти'
