@@ -1,0 +1,61 @@
+.not-found-route {
+  background-color: white;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.not-found-route__number {
+  margin: 0;
+  margin-top: 246px;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 169px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.not-found-route__text {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.not-found-route__link {
+  margin-top: 184px;
+  margin-bottom: 60px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #3456F3;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+  .not-found-route__number {
+    margin-top: 329px;
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .not-found-route__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 10px;
+  }
+
+  .not-found-route__link {
+    margin-top: 284px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

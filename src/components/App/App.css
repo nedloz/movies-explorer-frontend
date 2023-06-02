@@ -1,0 +1,9 @@
+
+.page {
+  margin: auto;
+  color: black;
+  /* color? fonts?  */
+  /* position? */
+  font-family: 'Inter', 'arial black', sans-serif;
+  min-height: 100vh;
+}

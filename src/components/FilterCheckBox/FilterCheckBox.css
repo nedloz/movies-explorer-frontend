@@ -1,0 +1,36 @@
+.filter-check-box {
+  cursor: pointer;
+  position: relative;
+  width: 34px;
+  height: 14px;
+  background: #2BE080;
+  border-radius: 20px;
+  appearance: none;
+  outline: none;
+  box-shadow:  0 0 2px rgba(0, 0, 0, .5);
+  transition: .5s;
+}
+
+.filter-check-box::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 2px;
+  top: 0;
+  left: 0;
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.filter-check-box:checked {
+  background-color: #2BE080;
+  box-shadow: none  
+}
+
+.filter-check-box:checked::before {
+  left: 20px;
+  background: #FFFFFF;
+ 
+}
