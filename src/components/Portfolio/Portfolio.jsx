@@ -29,7 +29,7 @@ function Portfolio() {
         </ul>
       </div>
     </section>
-  )
+  );
 };
 
 export default Portfolio;

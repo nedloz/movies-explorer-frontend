@@ -1,5 +1,5 @@
-import './AboutMe.css'
-import studentpic from '../../images/foto.jpeg'
+import './AboutMe.css';
+import studentpic from '../../images/foto.jpeg';
 
 function AboutMe() {
   return (
@@ -19,7 +19,7 @@ function AboutMe() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutMe
+export default AboutMe;

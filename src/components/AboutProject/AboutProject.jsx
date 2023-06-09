@@ -1,4 +1,4 @@
-import './AboutProject.css'
+import './AboutProject.css';
 
 function AboutProject() {
   return (
@@ -24,7 +24,7 @@ function AboutProject() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutProject
+export default AboutProject;

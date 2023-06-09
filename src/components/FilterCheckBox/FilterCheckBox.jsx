@@ -1,9 +1,9 @@
-import './FilterCheckBox.css'
+import './FilterCheckBox.css';
 
-function FilterCheckBox() {
+function FilterCheckBox({ onChange, value }) {
   return (
-    <input type='checkbox' className='filter-check-box' />
-  )
-}
+    <input type='checkbox' className='filter-check-box' onChange={onChange} checked={value} value='' />
+  );
+};
 
-export default FilterCheckBox
+export default FilterCheckBox;

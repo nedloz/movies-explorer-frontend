@@ -1,33 +1,50 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import './App.css';
+import MainPage from '../Main/Main'
+import HeaderPage from '../Header/Header';
+import FooterPage from '../Footer/Footer';
+import MoviesPage from '../Movies/Movies';
+import SavedMoviesPage from '../SavedMovies/SavedMovies';
+import ProfilePage from '../Profile/Profile';
+import LoginPage from '../Login/Login';
+import RegisterPage from '../Register/Register';
+import NotFoundRoutePage from '../NotFoundRoute/NotFoundRoute';
+import MenuPage from '../Menu/Menu';
 
-import Main from '../Main/Main'
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
-import NotFoundRoute from '../NotFoundRoute/NotFoundRoute';
-import Menu from '../Menu/Menu';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Api from '../../utils/Api/MainApi';
+import CurrentUserContext from '../../utils/Contexts/CurrentUserContext';
 
 function App() {
-  const [isWindowSmall, setIswindowSmall] = useState(false)
-  const [onMain, setOnMain] = useState(false)
-  const [onMovies, setOnMovies] = useState(false)
-  const [onSavedMovies, setOnSavedMovies] = useState(false)
-  const [onProfile, setOnProfile] = useState(false)
-  const [onAuthOrNotFound, setOnAuthOrNotFound] = useState(false)
+  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [isWindowSmall, setIswindowSmall] = useState(false);
+  const [onMain, setOnMain] = useState(false);
+  const [onMovies, setOnMovies] = useState(false);
+  const [onSavedMovies, setOnSavedMovies] = useState(false);
+  const [onProfile, setOnProfile] = useState(false);
+  const [onAuthOrNotFound, setOnAuthOrNotFound] = useState(false);
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
-  const [isMenuActive, setIsMenuActive] = useState(false)
+  useEffect(() => {
+    Api.getMe()
+      .then((res) => {
+        setLoggedIn(true);
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        setLoggedIn(false);
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     window.innerWidth <= 990 ? setIswindowSmall(true) : setIswindowSmall(false);
     window.addEventListener('resize', handleWindowSizeChange);
-  }, [])
+  }, []);
 
   const handleWindowSizeChange = () => {
     window.innerWidth <= 990 ? setIswindowSmall(true) : setIswindowSmall(false);
@@ -35,103 +52,122 @@ function App() {
   };
 
   const setAllPagesOff = () => {
-    setOnMain(false)
-    setOnMovies(false)
-    setOnSavedMovies(false)
-    setOnProfile(false)
-    setOnAuthOrNotFound(false)
-  }
+    setOnMain(false);
+    setOnMovies(false);
+    setOnSavedMovies(false);
+    setOnProfile(false);
+    setOnAuthOrNotFound(false);
+  };
+
+  const handleLogin = (res) => {
+    setCurrentUser(res);
+    setLoggedIn(true);
+    navigate('/movies');
+  };
 
   return (
-    <div style={{ backgroundColor: 'white' }}>
-      <div className='page'>
-        <Header
-          onMain={onMain}
-          onMoviesOrProfile={onMovies || onSavedMovies || onProfile}
-          onOther={onAuthOrNotFound}
-          isMenuButton={isWindowSmall}
-          setMenuOpen={setIsMenuActive}
-        />
-        <Routes>
-          <Route
-            path='/'
-            element={(
-              <Main
-                setAllPagesOff={setAllPagesOff}
-                setOnMain={setOnMain}
-              />
-            )}
+    <CurrentUserContext.Provider value={currentUser} >
+      <div style={{ backgroundColor: 'white' }}>
+        <div className='page'>
+          <HeaderPage
+            onMain={onMain}
+            onMoviesOrProfile={onMovies || onSavedMovies || onProfile}
+            onOther={onAuthOrNotFound}
+            isMenuButton={isWindowSmall}
+            setMenuOpen={setIsMenuActive}
+            loggedIn={loggedIn}
           />
-          <Route
-            path='/movies'
-            element={(
-              <Movies
-                setAllPagesOff={setAllPagesOff}
-                setOnMovies={setOnMovies}
-              />
-            )}
+          <Routes>
+            <Route
+              path='/'
+              element={(
+                <MainPage
+                  setAllPagesOff={setAllPagesOff}
+                  setOnMain={setOnMain}
+                />
+              )}
+            />
+            <Route
+              path='/movies'
+              element={(
+                <ProtectedRoute
+                  element={MoviesPage}
+                  loggedIn={loggedIn}
+                  setAllPagesOff={setAllPagesOff}
+                  setOnMovies={setOnMovies}
+                />
+              )}
+            />
+            <Route
+              path='/saved-movies'
+              element={(
+                <ProtectedRoute
+                  element={SavedMoviesPage}
+                  loggedIn={loggedIn}
+                  setAllPagesOff={setAllPagesOff}
+                  setOnSavedMovies={setOnSavedMovies}
+                  onSavedMovies={onSavedMovies}
+                />
+              )}
+            />
+            <Route
+              path='/profile'
+              element={(
+                <ProtectedRoute
+                  element={ProfilePage}
+                  loggedIn={loggedIn}
+                  setAllPagesOff={setAllPagesOff}
+                  setOnProfile={setOnProfile}
+                  setCurrentUser={setCurrentUser}
+                  setLoggedIn={setLoggedIn}
+                />
+              )}
+            />
+            <Route
+              path='/signin'
+              element={(
+                <LoginPage
+                  setAllPagesOff={setAllPagesOff}
+                  setOnLogin={setOnAuthOrNotFound}
+                  onLogin={handleLogin}
+                />
+              )}
+            />
+            <Route
+              path='/signup'
+              element={(
+                <RegisterPage
+                  setAllPagesOff={setAllPagesOff}
+                  setOnRegister={setOnAuthOrNotFound}
+                  onLogin={handleLogin}
+                />
+              )}
+            />
+            <Route
+              path='*'
+              element={(
+                <NotFoundRoutePage
+                  setAllPagesOff={setAllPagesOff}
+                  setOnNotFoundRoute={setOnAuthOrNotFound}
+                />
+              )}
+            />
+          </Routes>
+          <FooterPage
+            onProfile={onProfile}
+            onAuthOrNotFound={onAuthOrNotFound}
           />
-          <Route
-            path='/saved-movies'
-            element={(
-              <SavedMovies
-                setAllPagesOff={setAllPagesOff}
-                setOnSavedMovies={setOnSavedMovies}
-                onSavedMovies={onSavedMovies}
-              />
-            )}
+          <MenuPage
+            isMenuActive={isMenuActive}
+            setIsMenuActive={setIsMenuActive}
+            onMain={onMain}
+            onMovies={onMovies}
+            onSavedMovies={onSavedMovies}
           />
-          <Route
-            path='/profile'
-            element={(
-              <Profile
-                setAllPagesOff={setAllPagesOff}
-                setOnProfile={setOnProfile}
-              />
-            )}
-          />
-          <Route
-            path='/signin'
-            element={(
-              <Login
-                setAllPagesOff={setAllPagesOff}
-                setOnLogin={setOnAuthOrNotFound}
-              />
-            )}
-          />
-          <Route
-            path='/signup'
-            element={(
-              <Register
-                setAllPagesOff={setAllPagesOff}
-                setOnRegister={setOnAuthOrNotFound}
-              />
-            )}
-          />
-          <Route
-            path='*'
-            element={(
-              <NotFoundRoute
-                setAllPagesOff={setAllPagesOff}
-                setOnNotFoundRoute={setOnAuthOrNotFound}
-              />
-            )}
-          />
-        </Routes>
-        <Footer
-          onProfile={onProfile}
-          onAuthOrNotFound={onAuthOrNotFound}
-        />
-        <Menu
-          isMenuActive={isMenuActive}
-          setIsMenuActive={setIsMenuActive}
-          onMain={onMain}
-          onMovies={onMovies}
-          onSavedMovies={onSavedMovies}
-        />
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
-}
+};
 
 export default App;

@@ -10,7 +10,8 @@ function Menu({
   onSavedMovies,
 }) {
   const navigate = useNavigate();
-  const onCloseButtonClick = () => {
+
+  const handleCloseButtonClick = () => {
     setIsMenuActive(false);
   };
 
@@ -20,22 +21,22 @@ function Menu({
         <button
           type='button'
           className='menu__close-button'
-          onClick={onCloseButtonClick}
+          onClick={handleCloseButtonClick}
         />
         <div className='menu__links-container'>
           <Link
             to='/'
-            onClick={onCloseButtonClick}
+            onClick={handleCloseButtonClick}
             className={'menu__link' + (onMain ? ' menu__link_active' : '')}
           >Главная</Link>
           <Link
             to='/movies'
-            onClick={onCloseButtonClick}
+            onClick={handleCloseButtonClick}
             className={'menu__link' + (onMovies ? ' menu__link_active' : '')}
           >Фильмы</Link>
           <Link
             to='/saved-movies'
-            onClick={onCloseButtonClick}
+            onClick={handleCloseButtonClick}
             className={'menu__link' + (onSavedMovies ? ' menu__link_active' : '')}
           >Сохраненные фильмы</Link>
         </div>
@@ -44,13 +45,13 @@ function Menu({
           type='button'
           value='Аккаунт'
           onClick={() => {
-            onCloseButtonClick();
+            handleCloseButtonClick();
             navigate('/profile');
           }}
         />
       </div>
     </div>
-  )
+  );
 };
 
 export default Menu;

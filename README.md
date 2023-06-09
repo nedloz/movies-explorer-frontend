@@ -22,3 +22,9 @@
 # Ссылка на макет в фигме
 
 https://disk.yandex.ru/d/zhV2nPUiOAbtzA
+
+## Ссылки на проект
+
+IP-адрес 158.160.57.22
+
+https://nedloz.diplom.nomoredomains.monster

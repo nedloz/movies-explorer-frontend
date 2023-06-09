@@ -1,4 +1,4 @@
-import './Footer.css'
+import './Footer.css';
 
 function Footer({
   onProfile,
@@ -7,7 +7,7 @@ function Footer({
 
   if (onProfile || onAuthOrNotFound) {
     return;
-  }
+  };
 
   return (
     <footer className='footer' >
@@ -27,7 +27,7 @@ function Footer({
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
