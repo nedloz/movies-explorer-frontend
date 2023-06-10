@@ -34,8 +34,8 @@ function App() {
         .then((res) => {
           setLoggedIn(true);
           setCurrentUser(res);
-          localStorage.setItem('loggedIn', true)
         })
+        .then(() => localStorage.setItem('loggedIn', true))
         .catch((err) => {
           setLoggedIn(false);
         });

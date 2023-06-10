@@ -25,6 +25,11 @@ https://disk.yandex.ru/d/zhV2nPUiOAbtzA
 
 ## Ссылки на проект
 
-IP-адрес 158.160.57.22
+github https://github.com/nedloz/movies-explorer-frontend
+pull request https://github.com/nedloz/movies-explorer-frontend/pull/2
+
+IP-адрес 158.160.51.211
 
 https://nedloz.diplom.nomoredomains.monster
+
+
