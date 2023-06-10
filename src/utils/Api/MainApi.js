@@ -1,4 +1,5 @@
-const BASE_URL = ''
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = '';
 
 class auth {
   _checkResponse(res) {
@@ -111,7 +112,12 @@ class auth {
         name,
       }),
     })
-    .then((res) => this._checkResponse(res));
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res.status);
+    });
   } 
 }
 

@@ -89,6 +89,7 @@ function Movies({
         setRenderCards(renderCards);
         if (filteredCards.length === 0) {
           setMoviesCardListErrorText(cardsNotFoundText);
+          setIsPreloaderRender(false);
           return;
         };
         if (filteredCards.length === renderCards.length) {

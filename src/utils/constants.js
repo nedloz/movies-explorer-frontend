@@ -8,6 +8,7 @@ const searchTextNotFoundErrorText = 'Нужно ввести ключевое с
 const authCentralErrorText = 'Что то пошло не так...'
 const doubleEmailRegisterErrorText = 'Данный email уже был зарегистрирован'
 const userDataChangedText = 'Данные сохранены'
+const doubleDataErrorText = 'Нельзя дублировать значения'
 
 export {
   emailPattern,
@@ -18,4 +19,5 @@ export {
   authCentralErrorText,
   doubleEmailRegisterErrorText,
   userDataChangedText,
+  doubleDataErrorText,
 }

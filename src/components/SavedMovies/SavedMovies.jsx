@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Api from '../../utils/Api/MainApi'
@@ -78,7 +77,7 @@ function SavedMovies({
   };
 
   return (
-    <div className='saved-movies'>
+    <div>
       <SearchForm
         onSearchSubmit={handleSearch}
         isOnSavedMoviesPage={true}

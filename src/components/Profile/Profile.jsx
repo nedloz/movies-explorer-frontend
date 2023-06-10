@@ -10,6 +10,8 @@ import {
   namePattern,
   authCentralErrorText,
   userDataChangedText,
+  doubleEmailRegisterErrorText,
+  doubleDataErrorText,
 } from '../../utils/constants';
 
 const formConfig = {
@@ -62,7 +64,7 @@ function Profile({
   const handleProfileSubmit = () => {
     const { name, email } = getValues();
     if (name === currentUser.name || email === currentUser.email) {
-      setProfileErrorText('Нельзя дублировать значения');
+      setProfileErrorText(doubleDataErrorText);
       return;
     };
     Api.updateMe({ name, email })
@@ -70,7 +72,12 @@ function Profile({
         setCurrentUser(res);
         setProfileGoodNewsText(userDataChangedText);
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err === 409) {
+          setProfileErrorText(doubleEmailRegisterErrorText);
+          setIsSubmitButtonDisabled(false);
+          return;
+        }
         setIsSubmitButtonDisabled(false);
         setProfileErrorText(authCentralErrorText);
       });
@@ -81,6 +88,7 @@ function Profile({
       .then(() => {
         navigate('/');
         setLoggedIn(false);
+        localStorage.removeItem('loggedIn')
       })
       .catch((err) => {
         setProfileErrorText(authCentralErrorText);
