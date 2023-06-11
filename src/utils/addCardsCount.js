@@ -1,7 +1,13 @@
+import {
+  smallWindowAddCardsCount,
+  averageWindowAddCardsCount,
+  fullWindowAddCardsCount,
+} from "./constants"
+
 const addCardsCount = () => {
-  if (window.innerWidth < 990) return 2
-  if (window.innerWidth < 1280) return 3
-  if (window.innerWidth > 1280) return 4
+  if (window.innerWidth < 990) return smallWindowAddCardsCount
+  if (window.innerWidth < 1280) return averageWindowAddCardsCount
+  if (window.innerWidth > 1280) return fullWindowAddCardsCount
   return 2
 }
 
