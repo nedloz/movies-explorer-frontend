@@ -38,11 +38,10 @@ function Movies({
       setCards(cards);
       const renderCards = cardsCountFilter(cards);
       setRenderCards(renderCards);
-      
+      setIsPreloaderRender(true);
       if (cards.length === renderCards.length) {
         setIsPreloaderRender(false);
       };
-      setIsPreloaderRender(true);
       setIsMoviesListRender(true);
       MainApi.getSavedMovies()
         .then((res) => setSavedMovies(res))
