@@ -122,7 +122,7 @@ function App() {
                 />
               )}
             />
-            <Route
+            {loggedIn ? (<></>) : (<Route
               path='/signin'
               element={(
                 <LoginPage
@@ -131,8 +131,8 @@ function App() {
                   onLogin={handleLogin}
                 />
               )}
-            />
-            <Route
+            />)}
+            {loggedIn ? (<></>) : (<Route
               path='/signup'
               element={(
                 <RegisterPage
@@ -141,7 +141,7 @@ function App() {
                   onLogin={handleLogin}
                 />
               )}
-            />
+            />)}
             <Route
               path='*'
               element={(
