@@ -7,6 +7,7 @@ import useFormHook from '../../utils/hooks/useForm';
 function SearchForm({
   onSearchSubmit,
   isOnSavedMoviesPage,
+  isSearchButtonActive,
 }) {
   const [isMovieShort, setIsMovieShort] = useState(false);
   const { values, handleChange, setValues } = useFormHook({});
@@ -55,7 +56,11 @@ function SearchForm({
             placeholder='Фильм'
             required
           />
-          <button type='submit' className="search-form__button" >Поиск</button>
+          <button
+            type='submit'
+            className={'search-form__button' + (!isSearchButtonActive ? ' search-form__button_disabled' : '')}
+            disabled={!isSearchButtonActive}
+          >Поиск</button>
         </div>
         <div className='search-form__filter-container'>
           <FilterCheckBox onChange={onFilterButtonClick} value={isMovieShort} />

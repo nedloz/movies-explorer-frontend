@@ -19,6 +19,7 @@ function SavedMovies({
   const [isMoviesListRender, setIsMoviesListRender] = useState(false);
   const [moviesCardListErrorText, setMoviesCardListErrorText] = useState('');
   const [renderCards, setRenderCards] = useState([]);
+  const [isSearchButtonActive, setIsSearchButtonActive] = useState(true)
 
   useEffect(() => {
     setAllPagesOff();
@@ -45,6 +46,7 @@ function SavedMovies({
       setMoviesCardListErrorText(searchTextNotFoundErrorText);
       return;
     };
+    setIsSearchButtonActive(false)
     Api.getSavedMovies()
       .then((res) => {
         if (res.length === 0) {
@@ -59,7 +61,10 @@ function SavedMovies({
           setMoviesCardListErrorText(cardsNotFoundText);
         };
       })
-      .catch(() => setMoviesCardListErrorText(lostConnectionOnSearchErrorText));
+      .catch(() => setMoviesCardListErrorText(lostConnectionOnSearchErrorText))
+      .finally(() => {
+        setIsSearchButtonActive(true)
+      })
   };
 
   const onDeleteMovie = (e) => {
@@ -81,6 +86,7 @@ function SavedMovies({
       <SearchForm
         onSearchSubmit={handleSearch}
         isOnSavedMoviesPage={true}
+        isSearchButtonActive={isSearchButtonActive}
       />
       <MoviesCardList
         onSavedMovies={onSavedMovies}

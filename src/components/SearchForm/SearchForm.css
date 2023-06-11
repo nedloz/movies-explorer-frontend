@@ -65,6 +65,10 @@
   opacity: .7;
 }
 
+.search-form__button_disabled {
+  opacity: .5;
+}
+
 .search-form__line {
   width: 100%;
   background-color: #eeeeee;

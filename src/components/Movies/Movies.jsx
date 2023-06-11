@@ -26,6 +26,7 @@ function Movies({
   const [renderCards, setRenderCards] = useState([]);
   const [countCardsToAdd, setCountCardsToAdd] = useState(2);
   const [moviesCardListErrorText, setMoviesCardListErrorText] = useState('');
+  const [isSearchButtonActive, setIsSearchButtonActive] = useState(true)
 
   useEffect(() => {
     setAllPagesOff();
@@ -74,6 +75,7 @@ function Movies({
   const handleSearch = (text, isMoviesShortState) => {
     setIsPreloaderRender(true);
     setIsPreloaderActive(true);
+    setIsSearchButtonActive(false);
     setMoviesCardListErrorText('');
     MoviesApi.getMovies()
       .then((res) => {
@@ -105,6 +107,7 @@ function Movies({
       .finally(() => {
         setIsMoviesListRender(true);
         setIsPreloaderActive(false);
+        setIsSearchButtonActive(true);
       });
   };
 
@@ -142,6 +145,7 @@ function Movies({
     <div>
       <SearchForm
         onSearchSubmit={handleSearch}
+        isSearchButtonActive={isSearchButtonActive}
       />
       <MoviesCardList
         isMoviesListRender={isMoviesListRender}
