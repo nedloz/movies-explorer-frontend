@@ -85,6 +85,12 @@ function Profile({
 
   const handleLogOut = () => {
     Api.logOut()
+    .then(() => {
+      localStorage.removeItem('movies-cards')
+      localStorage.removeItem('search-text')
+      localStorage.removeItem('is-movies-short-state')
+      setCurrentUser({});
+    })
       .then(() => {
         navigate('/');
         setLoggedIn(false);
