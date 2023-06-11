@@ -74,10 +74,6 @@
   letter-spacing: 0px;
 }
 
-.profile__link_unactive {
-  opacity: .5;
-}
-
 .profile__submit-button {
   margin: 0 auto;
   margin-bottom: 16px;
@@ -93,6 +89,11 @@
   line-height: 16px;
   letter-spacing: 0px;
   font-weight: 400;
+}
+
+.profile__submit-button_disabled {
+  text-decoration: line-through;
+  opacity: .5;
 }
 
 .profile__logout-link {

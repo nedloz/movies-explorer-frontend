@@ -16,11 +16,9 @@ import {
 
 const formConfig = {
   name: {
-    required: true,
     pattern: namePattern,
   },
   email: {
-    required: true,
     pattern: emailPattern,
   },
 };
@@ -51,10 +49,12 @@ function Profile({
   });
 
   useEffect(() => {
-    const isError = errors.name || errors.email || errors.password;
+    setProfileGoodNewsText('')
+    setProfileErrorText('');
+    const isError = errors.name || errors.email;
     setIsErrorInForm(isError);
     setProfileErrorText(isError ? authCentralErrorText : '');
-  }, [errors.name, errors.email, errors.password]);
+  }, [errors.name, errors.email]);
 
   useEffect(() => {
     setIsSubmitButtonDisabled(false);
@@ -63,7 +63,8 @@ function Profile({
 
   const handleProfileSubmit = () => {
     const { name, email } = getValues();
-    if (name === currentUser.name || email === currentUser.email) {
+    if (name === currentUser.name && email === currentUser.email) {
+      setProfileGoodNewsText('')
       setProfileErrorText(doubleDataErrorText);
       return;
     };
@@ -127,12 +128,12 @@ function Profile({
             {...register('email', formConfig.email)}
           />
         </div>
-        <span className={'profile__error' + (profileGoodNewsText ? ' profile__good-error ' : '')} >{profileGoodNewsText ? profileGoodNewsText : profileErrorText}</span>
+        <span className={'profile__error' + (profileGoodNewsText ? ' profile__good-error ' : '')} >{profileGoodNewsText || profileErrorText}</span>
       </div>
       <button
         type='submit'
         className={'profile__submit-button' +
-          (isErrorInForm || isSubmitButtonDisabled ? ' profile__link_unactive' : '')}
+          (isErrorInForm || isSubmitButtonDisabled ? ' profile__submit-button_disabled' : '')}
         disabled={isErrorInForm || isSubmitButtonDisabled ? true : false}
       >Редактировать</button>
       <Link className='profile__logout-link' onClick={handleLogOut} >Выйти из аккаунта</Link>
