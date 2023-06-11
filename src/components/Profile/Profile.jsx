@@ -88,7 +88,6 @@ function Profile({
       .then(() => {
         navigate('/');
         setLoggedIn(false);
-        localStorage.removeItem('loggedIn')
       })
       .catch((err) => {
         setProfileErrorText(authCentralErrorText);

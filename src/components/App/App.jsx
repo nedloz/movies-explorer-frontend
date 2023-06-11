@@ -19,7 +19,7 @@ import CurrentUserContext from '../../utils/Contexts/CurrentUserContext';
 
 function App() {
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') ? true : false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isWindowSmall, setIswindowSmall] = useState(false);
   const [onMain, setOnMain] = useState(false);
   const [onMovies, setOnMovies] = useState(false);
@@ -35,11 +35,9 @@ function App() {
           setLoggedIn(true);
           setCurrentUser(res);
         })
-        .then(() => localStorage.setItem('loggedIn', true))
         .catch((err) => {
           setLoggedIn(false);
         });
-
   }, []);
 
   useEffect(() => {
