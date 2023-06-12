@@ -44,10 +44,10 @@ function Movies({
         setIsPreloaderRender(false);
       };
       setIsMoviesListRender(true);
-      MainApi.getSavedMovies()
-        .then((res) => setSavedMovies(res))
-        .catch((err) => console.log(err));
     };
+    MainApi.getSavedMovies()
+      .then((res) => setSavedMovies(res))
+      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
