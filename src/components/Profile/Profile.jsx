@@ -14,14 +14,6 @@ import {
   doubleDataErrorText,
 } from '../../utils/constants';
 
-const formConfig = {
-  name: {
-    pattern: namePattern,
-  },
-  email: {
-    pattern: emailPattern,
-  },
-};
 
 function Profile({
   setOnProfile,
@@ -37,11 +29,28 @@ function Profile({
       email: currentUser.email,
     },
   });
-  
+
   const [isErrorInForm, setIsErrorInForm] = useState(errors.name || errors.email);
-  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
   const [profileErrorText, setProfileErrorText] = useState(null);
   const [profileGoodNewsText, setProfileGoodNewsText] = useState(null);
+
+  const formConfig = {
+    name: {
+      pattern: namePattern,
+      onChange: (e) => {
+        setIsSubmitButtonDisabled(false)
+      },
+      validate: (value) => value !== currentUser.name
+    },
+    email: {
+      pattern: emailPattern,
+      onChange: (e) => {
+        setIsSubmitButtonDisabled(false)
+      },
+      validate: (value) => value !== currentUser.name
+    },
+  };
 
   useEffect(() => {
     setAllPagesOff();
@@ -57,7 +66,7 @@ function Profile({
   }, [errors.name, errors.email]);
 
   useEffect(() => {
-    setIsSubmitButtonDisabled(false);
+    setIsSubmitButtonDisabled(true);
     setProfileErrorText('');
   }, []);
 
@@ -86,12 +95,12 @@ function Profile({
 
   const handleLogOut = () => {
     Api.logOut()
-    .then(() => {
-      localStorage.removeItem('movies-cards')
-      localStorage.removeItem('search-text')
-      localStorage.removeItem('is-movies-short-state')
-      setCurrentUser({});
-    })
+      .then(() => {
+        localStorage.removeItem('movies-cards')
+        localStorage.removeItem('search-text')
+        localStorage.removeItem('is-movies-short-state')
+        setCurrentUser({});
+      })
       .then(() => {
         navigate('/');
         setLoggedIn(false);
