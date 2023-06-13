@@ -39,16 +39,28 @@ function Profile({
     name: {
       pattern: namePattern,
       onChange: (e) => {
+        setProfileGoodNewsText('')
         setIsSubmitButtonDisabled(false)
+        if (e.target.value === currentUser.name) {
+          setIsSubmitButtonDisabled(true);
+        };
       },
-      validate: (value) => value !== currentUser.name
+      validate: (value, formValues) => (
+        value !== currentUser.name || formValues.email !== currentUser.email
+      ),
     },
     email: {
       pattern: emailPattern,
       onChange: (e) => {
-        setIsSubmitButtonDisabled(false)
+        setProfileGoodNewsText('');
+        setIsSubmitButtonDisabled(false);
+        if (e.target.value === currentUser.email) {
+          setIsSubmitButtonDisabled(true);
+        };
       },
-      validate: (value) => value !== currentUser.name
+      validate: (value, formValues) => (
+        value !== currentUser.email || formValues.name !== currentUser.name
+      ),
     },
   };
 
@@ -81,6 +93,7 @@ function Profile({
       .then((res) => {
         setCurrentUser(res);
         setProfileGoodNewsText(userDataChangedText);
+        setIsSubmitButtonDisabled(true)
       })
       .catch((err) => {
         if (err === 409) {
