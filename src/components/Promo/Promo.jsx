@@ -9,7 +9,7 @@ function Promo() {
         <img className='promo__image' src={image} alt='изображение на баннере'/>
       </div>
     </section>
-  )
+  );
 };
 
 export default Promo;

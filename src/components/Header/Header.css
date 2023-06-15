@@ -22,6 +22,7 @@
 .header__logo {
   cursor: pointer;
   margin: 18px 0;
+  margin-right: 62px;
 }
 
 .header__link {
@@ -48,6 +49,10 @@
   font-size: 12px;
   line-height: 16px;
   margin-right: 30px;
+}
+
+.header__link_type_white {
+  color: white;
 }
 
 .header__button {
@@ -85,6 +90,11 @@
   height: 44px;
 }
 
+.header__button_type_dark-menu {
+  background-color: #073042;
+  background-image: url('../../images/header-menu-icon-average-white.svg');
+}
+
 @media screen and (max-width: 900px) {
   .header__container {
     padding: 0 30px;
@@ -113,5 +123,8 @@
     object-fit: cover;
     background-position: center;
     background-image: url('../../images/header-menu-icon-small.svg');
+  }
+  .header__button_type_dark-menu {
+    background-image: url('../../images/header-menu-icon-small-white.svg');
   }
 }

@@ -22,3 +22,14 @@
 # Ссылка на макет в фигме
 
 https://disk.yandex.ru/d/zhV2nPUiOAbtzA
+
+## Ссылки на проект
+
+github https://github.com/nedloz/movies-explorer-frontend
+pull request https://github.com/nedloz/movies-explorer-frontend/pull/2
+
+IP-адрес 158.160.51.211
+
+https://nedloz.diplom.nomoredomains.monster
+
+

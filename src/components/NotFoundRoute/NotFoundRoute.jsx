@@ -15,7 +15,7 @@ function NotFoundRoute({ setOnNotFoundRoute, setAllPagesOff }) {
       <p className='not-found-route__text'>Страница не найдена</p>
       <Link to='/' className='not-found-route__link'>Назад</Link>
     </div>
-  )
+  );
 };
 
 export default NotFoundRoute;
