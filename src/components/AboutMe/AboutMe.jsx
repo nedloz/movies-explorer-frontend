@@ -10,9 +10,8 @@ function AboutMe() {
         <div className='about-me__main'>
           <div className='about-me__student-container'>
             <h3 className='about-me__student-name'>Андрей</h3>
-            <p className='about-me__student-description'>Фронтенд-разработчик, 30 лет</p>
-            <p className='about-me__student-about'>Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
-              и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
+            <p className='about-me__student-description'>Фронтенд-разработчик, 16 лет</p>
+            <p className='about-me__student-about'>Я родился и живу в Москве, перешел в 11 класс. Я люблю слушать музыку, а ещё увлекаюсь бегом. Начал кодить год назад. После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и стал независим от родителей.</p>
             <a className='about-me__link' href='https://github.com/nedloz' target='_blank' rel="noreferrer">Github</a>
           </div>
           <img className='about-me__image' src={studentpic} alt='фотография студента' />
